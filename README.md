@@ -1,16 +1,10 @@
-# React & Apollo Tutorial
+# Oreo
 
 This is the sample project that belongs to the [React & Apollo Tutorial](https://www.howtographql.com/react-apollo/0-introduction/) on How to GraphQL.
 
 ## How to use
 
-### 1. Clone repository
-
-```sh
-git clone https://github.com/howtographql/react-apollo/
-```
-
-### 2. Install dependencies & Deploy the Prisma database API
+### 1. Install dependencies & Deploy the Prisma database API
 
 To install the Prisma CLI globally with Yarn, use the following command:
 ```sh
@@ -19,7 +13,6 @@ yarn global add prisma
 
 Also, run the following commands:
 ```sh
-cd react-apollo/server
 yarn install
 prisma deploy
 ```
@@ -69,7 +62,7 @@ Then, follow these steps in the interactive CLI wizard:
 
 </details>
 
-### 3. Start the server
+### 2. Start the server
 
 To start the server, all you need to do is execute the `start` script by running the following command inside the `server` directory:
 
@@ -77,7 +70,9 @@ To start the server, all you need to do is execute the `start` script by running
 yarn start
 ```
 
-> **Note**: If you want to interact with the GraphQL API of the server inside a [GraphQL Playground](https://github.com/prisma/graphql-playground), you can navigate to [http://localhost:4000](http://localhost:4000).
+
+### 3. GraphQL Playground
+If you want to interact with the GraphQL API of the server inside [GraphQL Playground](https://github.com/prisma/graphql-playground), you can navigate to [http://localhost:4000](http://localhost:4000).
 
 ### 4. Run the app
 
