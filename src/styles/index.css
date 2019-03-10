@@ -1,43 +1,83 @@
-body {
-  margin: 0;
+* {
   padding: 0;
-  font-family: Verdana, Geneva, sans-serif;
+  margin: 0;
+  box-sizing: border-box;
 }
 
-input {
-  max-width: 500px;
+html,
+body {
+  height: 100%;
+  width: 100%;
 }
 
-.gray {
-  color: #828282;
+body {
+  background: #eff3f5;
+  font-family: Helvetica, Arial, sans-serif;
+  padding: 1.5rem;
+  color: rgb(12, 52, 75);
+  line-height: 1.15;
 }
 
-.orange {
-  background-color: #ff6600;
+a {
+  text-decoration: none;
+  color: rgb(61, 88, 102);
 }
 
-.background-gray {
-  background-color: rgb(246, 246, 239);
+.pad {
+  padding: 24px;
 }
 
-.f11 {
-  font-size: 11px;
+.bot {
+  padding-bottom: 16px;
 }
 
-.w85 {
-  width: 85%;
+.flex {
+  display: flex;
 }
 
-.button {
-  font-family: monospace;
-  font-size: 10pt;
-  color: black;
-  background-color: buttonface;
-  text-align: center;
-  padding: 2px 6px 3px;
-  border-width: 2px;
-  border-style: outset;
-  border-color: buttonface;
+.card {
+  background-color: #fff;
+}
+
+.rad {
+  border-radius: 8px;
+}
+
+.head {
+  font-size: 28px;
+  font-weight: 700;
+}
+
+.space {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.grow {
+  flex-grow: 2;
+}
+
+.link {
+  font-size: 16px;
+  padding-left: 6px;
+}
+
+.btn {
+  height: 32px;
+  padding: 0px 12px;
+  font-size: 14px;
+  font-weight: 700;
+  text-transform: uppercase;
+  border: none;
   cursor: pointer;
-  max-width: 250px;
+}
+
+.green {
+  background: rgb(226, 248, 238);
+  color: rgb(21, 189, 118);
+}
+
+.blue {
+  background: rgb(216, 236, 253);
+  color: rgb(15, 122, 216);
 }

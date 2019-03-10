@@ -1,8 +1,8 @@
-import React, { Component } from 'react'
-import { Mutation } from 'react-apollo'
-import gql from 'graphql-tag'
-import { FEED_QUERY } from './LinkList'
-import { LINKS_PER_PAGE } from '../constants'
+import React, { Component } from 'react';
+import { Mutation } from 'react-apollo';
+import gql from 'graphql-tag';
+import { FEED_QUERY } from '../queries';
+import { LINKS_PER_PAGE } from '../constants';
 
 const POST_MUTATION = gql`
   mutation PostMutation($description: String!, $url: String!) {
@@ -17,16 +17,16 @@ const POST_MUTATION = gql`
       }
     }
   }
-`
+`;
 
 class CreateLink extends Component {
   state = {
     description: '',
     url: ''
-  }
+  };
 
   render() {
-    const { description, url } = this.state
+    const { description, url } = this.state;
     return (
       <div>
         <div className="flex flex-column mt3">
@@ -50,26 +50,26 @@ class CreateLink extends Component {
           variables={{ description, url }}
           onCompleted={() => this.props.history.push('/new/1')}
           update={(store, { data: { post } }) => {
-            const first = LINKS_PER_PAGE
-            const skip = 0
-            const orderBy = 'createdAt_DESC'
+            const first = LINKS_PER_PAGE;
+            const skip = 0;
+            const orderBy = 'createdAt_DESC';
             const data = store.readQuery({
               query: FEED_QUERY,
               variables: { first, skip, orderBy }
-            })
-            data.feed.links.unshift(post)
+            });
+            data.feed.links.unshift(post);
             store.writeQuery({
               query: FEED_QUERY,
               data,
               variables: { first, skip, orderBy }
-            })
+            });
           }}
         >
           {postMutation => <button onClick={postMutation}>Submit</button>}
         </Mutation>
       </div>
-    )
+    );
   }
 }
 
-export default CreateLink
+export default CreateLink;
