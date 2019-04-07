@@ -107,6 +107,7 @@ const LinkList = props => {
 
         return (
           <Fragment>
+            <h4 className="head area">Feed</h4>
             {linksToRender.map((link, index) => (
               <Link
                 key={link.id}

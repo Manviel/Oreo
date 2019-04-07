@@ -27,8 +27,16 @@ a {
   padding: 24px;
 }
 
+.area {
+  padding: 18px 0;
+}
+
 .bot {
   padding-bottom: 16px;
+}
+
+.up {
+  padding-top: 8px;
 }
 
 .down {

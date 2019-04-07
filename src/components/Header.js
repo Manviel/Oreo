@@ -5,8 +5,9 @@ import { AUTH_TOKEN } from '../constants';
 
 const Header = props => {
   const authToken = localStorage.getItem(AUTH_TOKEN);
+  
   return (
-    <nav className="flex space bot">
+    <nav className="flex space">
       <Link to="/" className="grow head">
         Hacker News
       </Link>
