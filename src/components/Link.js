@@ -1,27 +1,9 @@
 import React, { Component } from 'react';
+import { Mutation } from 'react-apollo';
+
+import { VOTE_MUTATION } from '../graphql/mutations';
 import { AUTH_TOKEN } from '../constants';
 import { timeDifferenceForDate } from '../utils';
-import { Mutation } from 'react-apollo';
-import gql from 'graphql-tag';
-
-const VOTE_MUTATION = gql`
-  mutation VoteMutation($linkId: ID!) {
-    vote(linkId: $linkId) {
-      id
-      link {
-        votes {
-          id
-          user {
-            id
-          }
-        }
-      }
-      user {
-        id
-      }
-    }
-  }
-`;
 
 class Link extends Component {
   render() {
@@ -29,7 +11,7 @@ class Link extends Component {
 
     return (
       <article className="flex bot">
-        <div className="flex items-center">
+        <div className="flex">
           {authToken && (
             <Mutation
               mutation={VOTE_MUTATION}
@@ -39,24 +21,22 @@ class Link extends Component {
               }
             >
               {voteMutation => (
-                <div className="ml1 gray f11" onClick={voteMutation}>
+                <button className="btn rad blue" onClick={voteMutation}>
                   Like
-                </div>
+                </button>
               )}
             </Mutation>
           )}
         </div>
-        <div className="ml1">
-          <div>
-            {this.props.link.description} ({this.props.link.url})
-          </div>
-          <div className="f6 lh-copy gray">
+        <div className="link">
+          {this.props.link.description} ({this.props.link.url})
+          <p>
             {this.props.link.votes.length} votes | by{' '}
             {this.props.link.postedBy
               ? this.props.link.postedBy.name
               : 'Unknown'}{' '}
             {timeDifferenceForDate(this.props.link.createdAt)}
-          </div>
+          </p>
         </div>
       </article>
     );

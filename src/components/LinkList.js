@@ -1,13 +1,14 @@
 import React, { Fragment } from 'react';
-import Link from './Link';
 import { Query } from 'react-apollo';
 
 import {
   FEED_QUERY,
   NEW_LINKS_SUBSCRIPTION,
   NEW_VOTES_SUBSCRIPTION
-} from '../queries';
+} from '../graphql/queries';
 import { LINKS_PER_PAGE } from '../constants';
+
+import Link from './Link';
 
 const LinkList = props => {
   const updateCacheAfterVote = (store, createVote, linkId) => {

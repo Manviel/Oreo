@@ -1,91 +1,77 @@
-import React, { Component } from 'react'
-import { AUTH_TOKEN } from '../constants'
-import { Mutation } from 'react-apollo'
-import gql from 'graphql-tag'
+import React, { Component } from 'react';
+import { AUTH_TOKEN } from '../constants';
+import { Mutation } from 'react-apollo';
 
-const SIGNUP_MUTATION = gql`
-  mutation SignupMutation($email: String!, $password: String!, $name: String!) {
-    signup(email: $email, password: $password, name: $name) {
-      token
-    }
-  }
-`
-
-const LOGIN_MUTATION = gql`
-  mutation LoginMutation($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
-      token
-    }
-  }
-`
+import { SIGNUP_MUTATION, LOGIN_MUTATION } from '../graphql/mutations';
 
 class Login extends Component {
   state = {
-    login: true, // switch between Login and SignUp
+    login: true,
     email: '',
     password: '',
     name: ''
-  }
+  };
+
+  confirm = async data => {
+    const { token } = this.state.login ? data.login : data.signup;
+    this.saveUserData(token);
+    this.props.history.push(`/`);
+  };
+
+  saveUserData = token => {
+    localStorage.setItem(AUTH_TOKEN, token);
+  };
 
   render() {
-    const { login, email, password, name } = this.state
+    const { login, email, password, name } = this.state;
     return (
-      <div>
-        <h4 className="mv3">{login ? 'Login' : 'Sign Up'}</h4>
-        <div className="flex flex-column">
-          {!login && (
-            <input
-              value={name}
-              onChange={e => this.setState({ name: e.target.value })}
-              type="text"
-              placeholder="Your name"
-            />
-          )}
+      <div className="flex col shade pad rad">
+        <h4 className="head pad">{login ? 'Login' : 'Sign Up'}</h4>
+        {!login && (
           <input
-            value={email}
-            onChange={e => this.setState({ email: e.target.value })}
+            value={name}
+            onChange={e => this.setState({ name: e.target.value })}
             type="text"
-            placeholder="Your email address"
+            placeholder="Your name"
+            className="input rad down"
           />
-          <input
-            value={password}
-            onChange={e => this.setState({ password: e.target.value })}
-            type="password"
-            placeholder="Choose a safe password"
-          />
-        </div>
-        <div className="flex mt3">
+        )}
+        <input
+          value={email}
+          onChange={e => this.setState({ email: e.target.value })}
+          type="text"
+          placeholder="Your email address"
+          className="input rad down"
+        />
+        <input
+          value={password}
+          onChange={e => this.setState({ password: e.target.value })}
+          type="password"
+          placeholder="Choose a safe password"
+          className="input rad"
+        />
+        <div className="flex space pad">
           <Mutation
             mutation={login ? LOGIN_MUTATION : SIGNUP_MUTATION}
             variables={{ email, password, name }}
-            onCompleted={data => this._confirm(data)}
+            onCompleted={data => this.confirm(data)}
           >
             {mutation => (
-              <div className="pointer mr2 button" onClick={mutation}>
+              <button className="btn white rad" onClick={mutation}>
                 {login ? 'login' : 'create account'}
-              </div>
+              </button>
             )}
           </Mutation>
-          <div
-            className="pointer button"
+          <button
+            className="btn white rad"
             onClick={() => this.setState({ login: !login })}
           >
             {login ? 'need to create an account?' : 'already have an account?'}
-          </div>
+          </button>
         </div>
       </div>
-    )
-  }
-
-  _confirm = async data => {
-    const { token } = this.state.login ? data.login : data.signup
-    this._saveUserData(token)
-    this.props.history.push(`/`)
-  }
-
-  _saveUserData = token => {
-    localStorage.setItem(AUTH_TOKEN, token)
+    );
   }
 }
 
-export default Login
+export default Login;

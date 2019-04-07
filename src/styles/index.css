@@ -31,6 +31,10 @@ a {
   padding-bottom: 16px;
 }
 
+.down {
+  margin-bottom: 8px;
+}
+
 .flex {
   display: flex;
 }
@@ -43,6 +47,14 @@ a {
   border-radius: 8px;
 }
 
+.col {
+  flex-direction: column;
+}
+
+.grow {
+  flex-grow: 2;
+}
+
 .head {
   font-size: 28px;
   font-weight: 700;
@@ -51,10 +63,6 @@ a {
 .space {
   justify-content: space-between;
   align-items: center;
-}
-
-.grow {
-  flex-grow: 2;
 }
 
 .link {
@@ -80,4 +88,24 @@ a {
 .blue {
   background: rgb(216, 236, 253);
   color: rgb(15, 122, 216);
+}
+
+.white {
+  background: #fff;
+  color: #4f4f4f;
+}
+
+.shade {
+  background: #232323;
+  color: #fff;
+}
+
+.input {
+  background: #121212;
+  height: 32px;
+  padding: 0px 12px;
+  font-size: 14px;
+  font-weight: 700;
+  border: none;
+  color: #898989;
 }
