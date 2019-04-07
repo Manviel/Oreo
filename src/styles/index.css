@@ -35,8 +35,12 @@ a {
   padding-bottom: 16px;
 }
 
+.left {
+  margin-left: 8px;
+}
+
 .up {
-  padding-top: 8px;
+  margin-top: 8px;
 }
 
 .down {

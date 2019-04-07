@@ -26,7 +26,7 @@ class Login extends Component {
     const { login, email, password, name } = this.state;
     return (
       <div className="flex col shade pad rad">
-        <h4 className="head pad">{login ? 'Login' : 'Sign Up'}</h4>
+        <h4 className="head area">{login ? 'Login' : 'Sign Up'}</h4>
         {!login && (
           <input
             value={name}
@@ -50,7 +50,7 @@ class Login extends Component {
           placeholder="Choose a safe password"
           className="input rad"
         />
-        <div className="flex space pad">
+        <div className="flex space area">
           <Mutation
             mutation={login ? LOGIN_MUTATION : SIGNUP_MUTATION}
             variables={{ email, password, name }}

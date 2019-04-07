@@ -5,7 +5,7 @@ import { AUTH_TOKEN } from '../constants';
 
 const Header = props => {
   const authToken = localStorage.getItem(AUTH_TOKEN);
-  
+
   return (
     <nav className="flex space">
       <Link to="/" className="grow head">
@@ -19,22 +19,20 @@ const Header = props => {
           Search
         </Link>
         {authToken && (
-          <div className="flex">
-            <Link to="/create" className="link">
-              Create
-            </Link>
-          </div>
+          <Link to="/create" className="link">
+            Create
+          </Link>
         )}
         {authToken ? (
-          <div
-            className="ml1 pointer black"
+          <button
+            className="btn shade rad"
             onClick={() => {
               localStorage.removeItem(AUTH_TOKEN);
               props.history.push(`/`);
             }}
           >
             Logout
-          </div>
+          </button>
         ) : (
           <Link to="/login" className="link">
             Login
